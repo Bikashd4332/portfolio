@@ -1,33 +1,38 @@
-import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
+import { defineStyleConfig } from '@chakra-ui/react';
 
 const Link = defineStyleConfig({
-    variants: {
-        primary: defineStyle({
-            bg: 'transparent',
-            color: 'lightteal',
-            borderWidth: '1px',
-            borderColor: 'lightteal',
+    baseStyle: {
+        fontFamily: 'mono',
+        textDecoration: 'none',
+        color: 'cement',
+        _hover: {
             textDecoration: 'none',
-            fontSize: 'sm',
+        },
+    },
+    variants: {
+        outlined: {
+            bg: 'transparent',
+            borderWidth: '1px',
+            borderColor: 'lightteal.700',
+            borderRadius: 'md',
+            color: 'lightteal.700',
+            fontFamily: 'mono',
+            margin: 'none',
             _hover: {
-                bg: 'rgba(100,255,218,0.1)',
-                textDecor: 'none',
+                bg: 'lightteal.200',
             },
-            borderRadius: '4px',
-        }),
+        },
     },
     sizes: {
-        md: defineStyle({
-            paddingX: '4',
-            paddingY: '3',
-        }),
-        lg: defineStyle({
+        md: {
+            paddingX: '5',
+            paddingY: '2',
+            fontSize: 'sm',
+        },
+        lg: {
             paddingX: '7',
             paddingY: '5',
-        }),
-    },
-    defaultProps: {
-        variant: 'primary',
+        },
     },
 });
 
