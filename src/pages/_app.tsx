@@ -29,12 +29,27 @@ const sfMono = localFont({
     ],
 });
 
+const calibreFont = localFont({
+    src: [
+        {
+            path: '../../public/fonts/Calibre-Regular.woff2',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: '../../public/fonts/Calibre-Semibold.woff2',
+            weight: '700',
+            style: 'italic',
+        },
+    ],
+});
+
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ChakraProvider theme={theme} resetCSS>
-            <main className={sfMono.className}>
+            <div className={`${sfMono.className} ${calibreFont.className}`}>
                 <Component {...pageProps} />
-            </main>
+            </div>
         </ChakraProvider>
     );
 }
