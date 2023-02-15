@@ -1,5 +1,37 @@
-import { HStack, Box, OrderedList, ListItem, Link } from '@chakra-ui/react';
+import { HStack, Link, chakra, shouldForwardProp, List } from '@chakra-ui/react';
+import { motion, isValidMotionProp } from 'framer-motion';
+import { Box } from '@/components/Box';
 import Logo from '@/svgs/logo.svg';
+
+const OrderedList = chakra(motion.ol, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+
+const ListItem = chakra(motion.li, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+
+const navBarAnimation = {
+    initial: { y: -100, opacity: 0 },
+    show: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
+const navBarLinksAnimation = {
+    initial: { y: -100, opacity: 0 },
+    show: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: 'tween',
+        },
+    },
+};
 
 const NAVBAR_LINK_MAPPING = [
     { linksTo: '/#about', label: 'About' },
@@ -13,12 +45,30 @@ export function NavBar() {
         <Box as="header" position="fixed" top="0" width="100vw" height="6.25rem">
             <Box as="nav">
                 <HStack paddingX="3.125rem" paddingTop={2} justifyContent="space-between">
-                    <Box width="80px" height="80px" cursor="pointer">
+                    <Box
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ type: 'tween', delay: '0.3' }}
+                        width="80px"
+                        height="80px"
+                        cursor="pointer"
+                    >
                         <Logo />
                     </Box>
                     <HStack gap="4">
                         <NavBarLinks />
-                        <Link variant="outlined" size="md" href="/resume">
+                        <Link
+                            as={motion.a}
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: { delay: 0.4, type: 'tween' },
+                            }}
+                            variant="outlined"
+                            size="md"
+                            href="/resume"
+                        >
                             Resume
                         </Link>
                     </HStack>
@@ -27,27 +77,36 @@ export function NavBar() {
         </Box>
     );
 }
-
 const NavBarLinks = () => {
     return (
-        <HStack as={OrderedList} styleType="none" fontSize="xs" color="cement">
-            {NAVBAR_LINK_MAPPING.map((link, index) => (
-                <ListItem key={link.linksTo} margin="0">
-                    <Link
-                        padding="2.5"
-                        fontSize="sm"
-                        href={link.linksTo}
-                        _hover={{
-                            color: 'lightteal.700',
-                        }}
-                    >
-                        <Box as="span" color="lightteal">
-                            {`0${index + 1}.`}
-                        </Box>{' '}
-                        {link.label}
-                    </Link>
-                </ListItem>
-            ))}
-        </HStack>
+        <List>
+            <OrderedList
+                display="flex"
+                variants={navBarAnimation}
+                initial="initial"
+                animate="show"
+                fontSize="xs"
+                listStyleType="none"
+                color="cement"
+            >
+                {NAVBAR_LINK_MAPPING.map((link, index) => (
+                    <ListItem key={link.linksTo} margin="0" variants={navBarLinksAnimation}>
+                        <Link
+                            padding="2.5"
+                            fontSize="sm"
+                            href={link.linksTo}
+                            _hover={{
+                                color: 'lightteal.700',
+                            }}
+                        >
+                            <Box as="span" color="lightteal.700">
+                                {`0${index + 1}.`}
+                            </Box>{' '}
+                            {link.label}
+                        </Link>
+                    </ListItem>
+                ))}
+            </OrderedList>
+        </List>
     );
 };
