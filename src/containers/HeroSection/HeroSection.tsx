@@ -7,21 +7,26 @@ export function HeroSection() {
             flexDirection="column"
             justifyContent="center"
             maxWidth="62.5rem"
-            marginX={{ base: '0', md: '7rem' }}
+            marginX={{ base: '0', md: '0', lg: 28 }}
             height="100vh"
         >
             <Heading
-                size={{ base: 'xs', md: 'sm' }}
+                size={{ base: 'xs', md: '2xs' }}
                 fontWeight="medium"
-                marginBottom={{ base: '0.5', md: '1rem' }}
-                marginLeft={{ base: '2px', md: '4px' }}
+                marginBottom={{ base: 0.5, md: 4 }}
+                marginLeft={{ base: 0.5, md: 1 }}
             >
                 Hi, my name is
             </Heading>
-            <Heading variant="secondary" fontSize={{ base: '2.5rem', md: '5rem' }}>
+            <Heading variant="secondary" fontSize={{ base: '2.5rem', md: '5rem' }} fontWeight="600">
                 Bikash Das.
             </Heading>
-            <Heading variant="tertiary" fontSize={{ base: '2.5rem', md: '5rem' }} lineHeight="1.1">
+            <Heading
+                variant="tertiary"
+                fontSize={{ base: '2.5rem', md: '5rem' }}
+                lineHeight="1.1"
+                fontWeight="600"
+            >
                 I build things for Web.
             </Heading>
             <Text
@@ -40,8 +45,8 @@ export function HeroSection() {
                 variant="outlined"
                 size={{ md: 'lg' }}
                 marginTop="50px"
-                paddingY="1.25rem"
-                paddingX="1.75rem"
+                paddingY={5}
+                paddingX={7}
                 width="max-content"
                 fontSize={{ base: '0.875rem' }}
             >
