@@ -10,7 +10,7 @@ export function Container({ children }: ContainerProps) {
     return (
         <Box
             as="main"
-            paddingX="9.375rem"
+            paddingX={{ base: '1.562rem', md: '9.375rem' }}
             width="100%"
             min-height="100vh"
             maxWidth="1600px"
