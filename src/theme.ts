@@ -1,4 +1,5 @@
-import { ChakraTheme, extendTheme } from '@chakra-ui/react';
+import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react';
+// import chakraTheme from '@chakra-ui/theme';
 
 import Link from './components/styles/link';
 import Heading from './components/styles/heading';
@@ -7,6 +8,8 @@ const fonts = {
     mono: `"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace`,
     sans: `"Calibre","Inter","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif`,
 };
+
+// const { Heading } = chakraTheme.components;
 
 const breakpoints = {
     xs: '23',
@@ -27,7 +30,7 @@ const radii: ChakraTheme['radii'] = {
     button: '12px',
 };
 
-const theme = extendTheme({
+const theme = extendBaseTheme({
     radii,
     colors,
     fonts,
