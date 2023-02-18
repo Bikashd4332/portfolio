@@ -9,10 +9,8 @@ const fonts = {
 };
 
 const breakpoints = {
-    sm: '40em',
-    md: '52em',
-    lg: '64em',
-    xl: '80em',
+    xs: '23',
+    sm: '30',
 };
 
 const colors: ChakraTheme['colors'] = {

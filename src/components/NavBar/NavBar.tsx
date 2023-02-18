@@ -12,7 +12,6 @@ const ListItem = chakra(motion.li, {
 });
 
 const navBarAnimation = {
-    initial: { y: -100, opacity: 0 },
     show: {
         y: 0,
         opacity: 1,
@@ -44,7 +43,12 @@ export function NavBar() {
     return (
         <Box as="header" position="fixed" top="0" width="100vw" height="6.25rem">
             <Box as="nav">
-                <HStack paddingX="3.125rem" paddingTop={2} justifyContent="space-between">
+                <HStack
+                    paddingX={{ base: '1.5625em', md: '3.125rem' }}
+                    transitionDuration="0.25s"
+                    transitionProperty="all"
+                    justifyContent="space-between"
+                >
                     <Box
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -55,7 +59,7 @@ export function NavBar() {
                     >
                         <Logo />
                     </Box>
-                    <HStack gap="4">
+                    <HStack gap="4" display={{ base: 'none', md: 'flex' }}>
                         <NavBarLinks />
                         <Link
                             as={motion.a}
