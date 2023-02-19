@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraBaseProvider } from '@chakra-ui/react';
 import localFont from '@next/font/local';
 
 import theme from '@/theme';
@@ -46,10 +46,10 @@ const calibreFont = localFont({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <ChakraProvider theme={theme} resetCSS>
+        <ChakraBaseProvider theme={theme} resetCSS>
             <div className={`${sfMono.className} ${calibreFont.className}`}>
                 <Component {...pageProps} />
             </div>
-        </ChakraProvider>
+        </ChakraBaseProvider>
     );
 }

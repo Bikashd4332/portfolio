@@ -8,7 +8,7 @@ export default function Index() {
         <>
             <MetaInfo />
             <NavBar />
-            <Container>
+            <Container as="main">
                 <HeroSection />
             </Container>
         </>
