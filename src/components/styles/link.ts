@@ -4,6 +4,9 @@ const Link = defineStyleConfig({
     baseStyle: {
         fontFamily: 'mono',
         textDecoration: 'none',
+        transitionProperty: 'all',
+        transitionDuration: '0.25s',
+        cursor: 'pointer',
         color: 'cement',
         _hover: {
             textDecoration: 'none',
@@ -14,10 +17,11 @@ const Link = defineStyleConfig({
             bg: 'transparent',
             borderWidth: '1px',
             borderColor: 'lightteal.700',
-            borderRadius: 'md',
+            borderRadius: '3',
             color: 'lightteal.700',
             fontFamily: 'mono',
             margin: 'none',
+            lineHeight: 1,
             _hover: {
                 bg: 'lightteal.200',
             },
@@ -25,13 +29,14 @@ const Link = defineStyleConfig({
     },
     sizes: {
         md: {
-            paddingX: '5',
-            paddingY: '2',
-            fontSize: 'sm',
+            paddingX: '1rem',
+            paddingY: '0.75rem',
+            fontSize: '0.8125rem',
         },
         lg: {
             paddingX: '7',
             paddingY: '5',
+            fontSize: { base: '0.875rem', md: 'sm' },
         },
     },
 });

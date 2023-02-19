@@ -7,12 +7,12 @@ const Heading = defineStyleConfig({
             fontFamily: 'mono',
         },
         secondary: {
-            color: 'cement',
+            color: 'slate.50',
             fontFamily: 'sans',
             lineHeight: '1.1',
         },
         tertiary: {
-            color: 'slate',
+            color: 'slate.700',
             fontFamily: 'sans',
             lineHeight: '1.1',
         },
