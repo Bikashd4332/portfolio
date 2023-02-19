@@ -18,7 +18,6 @@ export function MetaInfo() {
             <meta
                 name="description"
                 content="Bikash Das is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences."
-                data-react-helmet="true"
             ></meta>
         </Head>
     );
