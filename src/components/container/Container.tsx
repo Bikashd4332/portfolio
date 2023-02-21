@@ -1,23 +1,12 @@
-import { Box, As } from '@chakra-ui/react';
+import { Box, BoxProps, useStyleConfig } from '@chakra-ui/react';
 
-import { ReactNode } from 'react';
+interface ContainerProps extends BoxProps {}
 
-type ContainerProps = {
-    children: ReactNode;
-    as?: As;
-};
+export function Container({ children, as, ...props }: ContainerProps) {
+    const styles = useStyleConfig('Container', props);
 
-export function Container({ children, as = 'div' }: ContainerProps) {
     return (
-        <Box
-            as={as}
-            paddingX={{ base: '1.562rem', md: 14, lg: '9.375rem' }}
-            width="100%"
-            minHeight="100vh"
-            maxWidth="100em"
-            marginTop="100px"
-            margin="0 auto"
-        >
+        <Box __css={styles} as={as}>
             {children}
         </Box>
     );
