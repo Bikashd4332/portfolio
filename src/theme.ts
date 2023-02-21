@@ -2,6 +2,8 @@ import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react';
 
 import Link from './components/styles/link';
 import Heading from './components/styles/heading';
+import Container from './components/styles/container';
+import globalStyles from './components/styles/globalstyles';
 
 const fonts = {
     mono: `"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace`,
@@ -46,20 +48,8 @@ const theme = extendBaseTheme({
     fonts,
     breakpoints,
     fontSizes,
-    components: { Link, Heading },
-    styles: {
-        global: () => ({
-            body: {
-                bg: 'navyblue.600',
-                fontSize: { base: 'lg', md: 'xl' },
-                lineHeight: '1.3',
-            },
-            p: {
-                color: 'slate.700',
-                fontFamily: 'sans',
-            },
-        }),
-    },
+    components: { Link, Heading, Container },
+    styles: { ...globalStyles },
 } as Partial<ChakraTheme>);
 
 export default theme;
