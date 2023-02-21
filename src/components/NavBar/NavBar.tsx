@@ -48,6 +48,8 @@ export function NavBar() {
                     justifyContent="space-between"
                 >
                     <Box
+                        as={motion.a}
+                        href="/"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ type: 'tween', delay: '0.3' }}
@@ -87,7 +89,6 @@ const NavBarLinks = () => {
             initial="initial"
             animate="show"
             fontSize="xs"
-            listStyleType="none"
             color="cement"
         >
             <HStack>
@@ -95,7 +96,7 @@ const NavBarLinks = () => {
                     <ListItem key={link.linksTo} margin="0" variants={navBarLinksAnimation}>
                         <Link
                             padding="2.5"
-                            fontSize="0.812rem"
+                            fontSize="0.8125rem"
                             href={link.linksTo}
                             color="slate.50"
                             _hover={{
