@@ -25,6 +25,16 @@ class MyDocument extends Document {
             <Html lang="en-us">
                 <Head>
                     <MetaInfo />
+                    <style>
+                        {` 
+                        body {
+                            min-height: 100vh;
+                            min-height: -webkit-fill-available;
+                            min-height: -moz-available;
+                            min-height: fill-available
+                        }
+                    `}
+                    </style>
                 </Head>
                 <body>
                     <Main />
