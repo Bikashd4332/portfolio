@@ -1,9 +1,12 @@
 const globalStyles = {
     global: () => ({
+        html: {
+            height: 'fill-available',
+        },
         body: {
             bg: 'navyblue.600',
             width: '100%',
-            minHeight: '100%',
+            minHeight: 'fill-available',
             overflowX: 'hidden',
             '-webkit-font-smoothing': 'antialiased',
             fontSize: { base: 'lg', md: 'xl' },
