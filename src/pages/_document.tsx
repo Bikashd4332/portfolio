@@ -1,3 +1,4 @@
+import { MetaInfo } from '@/containers/MetaInfo';
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
 class MyDocument extends Document {
@@ -22,7 +23,9 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="en-us">
-                <Head />
+                <Head>
+                    <MetaInfo />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />
