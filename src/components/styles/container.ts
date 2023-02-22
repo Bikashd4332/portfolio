@@ -1,6 +1,6 @@
 import { defineStyleConfig } from '@chakra-ui/react';
 
-const Heading = defineStyleConfig({
+const Container = defineStyleConfig({
     baseStyle: {
         marginX: 'auto',
         marginY: '0',
@@ -11,4 +11,4 @@ const Heading = defineStyleConfig({
     },
 });
 
-export default Heading;
+export default Container;
