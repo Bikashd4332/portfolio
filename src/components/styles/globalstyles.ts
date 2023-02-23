@@ -21,7 +21,7 @@ const globalStyles = {
             margin: '0px 0px 10px',
             fontWeight: '700',
         },
-        'ol,ul': {
+        'ol, ul': {
             listStyleType: 'none',
         },
         section: {
