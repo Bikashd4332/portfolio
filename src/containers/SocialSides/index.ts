@@ -1,0 +1,1 @@
+export { SocialSides } from './SocialSlides';
