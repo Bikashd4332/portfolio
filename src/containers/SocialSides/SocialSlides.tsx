@@ -51,7 +51,7 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
                         _last={{ marginBottom: '20px' }}
                     >
                         <Link href={url} padding="10px" target="_blank" rel="noopener noreferrer">
-                            <Icon w="20px" h="20px">
+                            <Icon w="20px" preserveAspectRatio="1">
                                 <SvgIcon />;
                             </Icon>
                         </Link>
@@ -78,14 +78,15 @@ const SocialSides = () => {
             variants={parentVariants}
             initial="initial"
             animate="show"
-            display={{ base: 'none', lg: 'initial' }}
+            display={{ base: 'none', md: 'initial' }}
         >
             <VStack
                 as={UnorderedList}
+                margin="0"
                 spacing="4"
                 listStyleType="none"
-                position="absolute"
-                left="30px"
+                position="fixed"
+                left={{ base: '20px', lg: '40px' }}
                 bottom="0"
             >
                 {renderSocials(ACCOUNT_MAPS)}
