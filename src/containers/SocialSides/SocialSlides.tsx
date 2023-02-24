@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { Github, CodePen, Instagram, LinkedIn, Twitter } from '@/components/Icons';
 
+const EMAIL = 'bikashd4332@gmail.com';
 const ACCOUNT_MAPS = {
     github: {
         iconComp: Github,
@@ -27,14 +28,6 @@ const ACCOUNT_MAPS = {
     },
 } as const;
 
-const childVariants = {
-    initial: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: { type: 'tween' },
-    },
-};
-
 const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
     const socialsToRender = Object.keys(socials) as (keyof typeof ACCOUNT_MAPS)[];
 
@@ -46,9 +39,15 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
                 return (
                     <ListItem
                         as={motion.li}
-                        variants={childVariants}
                         key={social}
                         _last={{ marginBottom: '20px' }}
+                        _hover={{
+                            color: 'lightteal.700',
+                        }}
+                        whileHover={{
+                            y: -1,
+                            transition: { duration: 0.1, type: 'tween' },
+                        }}
                     >
                         <Link href={url} padding="10px" target="_blank" rel="noopener noreferrer">
                             <Icon w="20px" preserveAspectRatio="1">
@@ -60,6 +59,13 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
             })}
         </>
     );
+};
+
+const mailToLinkVariants = {
+    show: {
+        scale: 1.1,
+        textShadow: '0px 0px 4px gray',
+    },
 };
 
 const parentVariants = {
@@ -91,6 +97,37 @@ const SocialSides = () => {
             >
                 {renderSocials(ACCOUNT_MAPS)}
                 <Box as="span" width="1px" bg="slate.50" height="90px" display="inline-block" />
+            </VStack>
+
+            <VStack position="fixed" right="40px" bottom="0" left="auto">
+                <Link
+                    as={motion.a}
+                    padding="10px"
+                    whileHover={{
+                        y: -5,
+                        transition: { duration: 0.1, type: 'tween' },
+                    }}
+                    href={`mailto:${EMAIL}`}
+                    fontSize="12px"
+                    display="inline-block"
+                    lineHeight="18px"
+                    letterSpacing="0.1em"
+                    marginBottom="20px"
+                    _hover={{
+                        color: 'lightteal.700',
+                    }}
+                    sx={{ writingMode: 'vertical-rl' }}
+                >
+                    {EMAIL}
+                </Link>
+                <Box
+                    as="span"
+                    width="1px"
+                    bg="slate.50"
+                    height="90px"
+                    display="inline-block"
+                    marginTop="20px"
+                />
             </VStack>
         </Box>
     );
