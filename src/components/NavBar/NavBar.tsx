@@ -53,8 +53,7 @@ export function NavBar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ type: 'tween', delay: '0.3' }}
-                        width="80px"
-                        height="80px"
+                        width="42px"
                         cursor="pointer"
                     >
                         <Logo />
