@@ -61,13 +61,6 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
     );
 };
 
-const mailToLinkVariants = {
-    show: {
-        scale: 1.1,
-        textShadow: '0px 0px 4px gray',
-    },
-};
-
 const parentVariants = {
     initial: { opacity: 0 },
     show: {
