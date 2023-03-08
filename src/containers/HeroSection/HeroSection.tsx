@@ -3,19 +3,26 @@ import { motion } from 'framer-motion';
 
 import { Box } from '@/components/Box';
 
+export interface CompanyInfo {
+    name: string;
+    url: string;
+}
+
+interface HeroSectionProps {
+    currentCompanyInfo: CompanyInfo;
+}
+
 const parentVariants = {
     initial: {
-        y: 50,
         opacity: 0,
     },
     show: {
-        y: 0,
         opacity: 1,
         transition: {
             delay: 1,
             delayChildren: 1,
-            duration: 0.2,
             staggerChildren: 0.1,
+            default: { duration: 0.2 },
         },
     },
 };
@@ -34,7 +41,7 @@ const childVariants = {
     },
 };
 
-export function HeroSection() {
+export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
     return (
         <Flex
             as={motion.section}
@@ -69,7 +76,7 @@ export function HeroSection() {
                     marginTop="5px"
                     marginBottom="0"
                 >
-                    I build things for Web.
+                    I build things for the Web.
                 </Heading>
             </NonAnimatedBox>
 
@@ -81,7 +88,11 @@ export function HeroSection() {
             >
                 I’m a software engineer specializing in building (and occasionally designing)
                 exceptional digital experiences. Currently, I’m focused on building accessible,
-                human-centered products at.
+                human-centered products at{' '}
+                <Link href={currentCompanyInfo.url} variant="inline" target="_blank">
+                    {currentCompanyInfo.name}
+                </Link>
+                .
             </Text>
             <Link
                 as={motion.a}
