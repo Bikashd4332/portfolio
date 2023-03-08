@@ -33,7 +33,7 @@ const navBarLinksAnimation = {
 };
 
 const NAVBAR_HEIGHT = 70;
-const NAVBAR_HEIGHT_SNAPPED = 70;
+const NAVBAR_HEIGHT_SNAPPED = 100;
 
 const NAVBAR_LINK_MAPPING = [
     { linksTo: '/#about', label: 'About' },
@@ -65,7 +65,7 @@ export function NavBar() {
             {...(isScrollToTop
                 ? { height: `${NAVBAR_HEIGHT_SNAPPED}px` }
                 : {
-                      height: NAVBAR_HEIGHT,
+                      height: `${NAVBAR_HEIGHT}px`,
                       transform:
                           scrollDir === ScrollDirectionEnum.DOWN
                               ? `translateY(calc(${NAVBAR_HEIGHT}px * -1))`
