@@ -101,7 +101,7 @@ const SocialSides = () => {
                         transition: { duration: 0.1, type: 'tween' },
                     }}
                     href={`mailto:${EMAIL}`}
-                    fontSize="12px"
+                    fontSize="14px"
                     display="inline-block"
                     lineHeight="18px"
                     letterSpacing="0.1em"

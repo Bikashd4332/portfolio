@@ -26,6 +26,30 @@ const Link = defineStyleConfig({
                 bg: 'lightteal.200',
             },
         },
+        inline: {
+            display: 'inline-block',
+            position: 'relative',
+            color: 'lightteal.700',
+            fontFamily: 'sans',
+
+            ':after': {
+                content: `""`,
+                display: 'block',
+                position: 'relative',
+                width: '0px',
+                height: '1px',
+                bottom: '-0.1px',
+                backgroundColor: 'lightteal.700',
+                opacity: 0.5,
+                transition: 'all 0.25s cubic-bezier(0.645,0.045,0.355,1)',
+            },
+
+            _hover: {
+                ':after': {
+                    width: '100%',
+                },
+            },
+        },
     },
     sizes: {
         md: {
