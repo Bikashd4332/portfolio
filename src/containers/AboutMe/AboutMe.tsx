@@ -1,22 +1,58 @@
-import { Heading, Grid, Text, Image, VStack, Box as ChakraBox } from '@chakra-ui/react';
+import {
+    Heading,
+    Grid,
+    Text,
+    Image,
+    VStack,
+    Box as ChakraBox,
+    UnorderedList,
+    ListItem,
+} from '@chakra-ui/react';
 
 import { Box } from '@/components/Box';
 import { motion } from 'framer-motion';
+
+const KNOWN_TECHNOLOGIES = [
+    'JavaScript (ES6+)',
+    'React',
+    'Typescript',
+    'Node.js',
+    'Jest',
+    'Nest.js',
+    'ChakraUI',
+    'ReactTable',
+    'urql',
+    'react-hook-form',
+] as const;
+
+const sectionAnimation = {
+    initial: {
+        opacity: 0,
+        y: 50,
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: '0.4',
+        },
+    },
+};
 
 function AboutMe() {
     return (
         <Box
             as={motion.section}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: '0.4' }}
+            initial="initial"
+            whileInView="show"
+            variants={sectionAnimation}
             viewport={{ amount: 0.4, once: true }}
         >
             <Heading as="h2" variant="numbered-heading">
                 About Me
             </Heading>
-            <Grid templateColumns="3fr 2fr" gap="50px" fontSize="18px">
-                <VStack gap="15px">
+            <Grid templateColumns="3fr 2fr" gap="50px" display={{ base: 'block', md: 'grid' }}>
+                <VStack gap="15px" alignItems="flex-start">
                     <Text>
                         Hello! My name is Bikash and I enjoy creating things that live on the
                         internet. My interest in web development started back in 2012 when I decided
@@ -37,12 +73,30 @@ function AboutMe() {
                         I also recently launched a course that covers everything you need to build a
                         web app with the Spotify API using Node & React.
                     </Text>
+
+                    <Grid
+                        as={UnorderedList}
+                        templateColumns="repeat(2, minmax(140px, 200px))"
+                        gap="10px"
+                        overflow="hidden"
+                        listStyleType="none"
+                    >
+                        {KNOWN_TECHNOLOGIES.map((technology) => (
+                            <ListItem key={technology} fontFamily="mono" fontSize="13px">
+                                <Box as="span" color="lightteal.700" pr="10px">
+                                    ▹
+                                </Box>
+                                {technology}
+                            </ListItem>
+                        ))}
+                    </Grid>
                 </VStack>
                 <ChakraBox
                     width="300px"
                     height="300px"
                     position="relative"
                     background="lightteal.700"
+                    margin={{ base: '50px auto 0px', md: '' }}
                     sx={{
                         '&::before': {
                             content: `""`,
