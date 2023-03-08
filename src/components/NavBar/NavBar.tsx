@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import { HStack, Link, chakra, shouldForwardProp, Center } from '@chakra-ui/react';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { Box } from '@/components/Box';
 import Logo from '@/svgs/logo.svg';
+import { useScrollDirection, ScrollDirectionEnum } from '@/hooks/useScrollDirecton';
 
 const OrderedList = chakra(motion.ol, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -30,6 +32,9 @@ const navBarLinksAnimation = {
     },
 };
 
+const NAVBAR_HEIGHT = 70;
+const NAVBAR_HEIGHT_SNAPPED = 70;
+
 const NAVBAR_LINK_MAPPING = [
     { linksTo: '/#about', label: 'About' },
     { linksTo: '/#experience', label: 'Experience' },
@@ -38,8 +43,39 @@ const NAVBAR_LINK_MAPPING = [
 ] as const;
 
 export function NavBar() {
+    const scrollDir = useScrollDirection({ initialScrollDir: ScrollDirectionEnum.UP });
+    const [isScrollToTop, setIsScrollToTop] = useState(true);
+
+    const handleScroll = () => {
+        setIsScrollToTop(window.scrollY < 50);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.addEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <Center as="header" position="fixed" top="0" width="100vw" height="6.25rem">
+        <Center
+            as="header"
+            position="fixed"
+            top="0"
+            width="100vw"
+            {...(isScrollToTop
+                ? { height: `${NAVBAR_HEIGHT_SNAPPED}px` }
+                : {
+                      height: NAVBAR_HEIGHT,
+                      transform:
+                          scrollDir === ScrollDirectionEnum.DOWN
+                              ? `translateY(calc(${NAVBAR_HEIGHT}px * -1))`
+                              : `translateY(0)`,
+                      boxShadow: '0 10px 30px -10px rgba(2, 12, 27, 0.7)',
+                  })}
+            backdropFilter="blur(10px)"
+            zIndex={11}
+            transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
+        >
             <Box as="nav" flex={1}>
                 <HStack
                     paddingX={{ base: '1.5625em', md: '3.125rem' }}
