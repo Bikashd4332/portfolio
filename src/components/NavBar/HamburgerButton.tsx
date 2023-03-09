@@ -31,7 +31,7 @@ function HamburgerButton({ isTriggered, ...props }: DrawerTriggerButtonProps) {
             {...props}
         >
             <ChakraBox position="relative" width="30px" height="24px" display="inline-block">
-                <Box top="18%" width="120%" {...COMMON_HAMBURGER_STYLES} />
+                <Box top="13%" width="120%" {...COMMON_HAMBURGER_STYLES} />
                 <Box top="50%" width="100%" {...COMMON_HAMBURGER_STYLES} />
                 <Box top="85%" width="80%" {...COMMON_HAMBURGER_STYLES} />
             </ChakraBox>
