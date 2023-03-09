@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { HStack, Link, chakra, shouldForwardProp, Center } from '@chakra-ui/react';
+import { HStack, Link, chakra, shouldForwardProp, Center, useBreakpoint } from '@chakra-ui/react';
 import { motion, isValidMotionProp, Variants } from 'framer-motion';
 import { Box } from '@/components/Box';
 import Logo from '@/svgs/logo.svg';
 import { useScrollDirection, ScrollDirectionEnum } from '@/hooks/useScrollDirecton';
+import { HamburgerButton } from './HamburgerButton';
 
 const OrderedList = chakra(motion.ol, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -78,7 +79,7 @@ export function NavBar() {
         >
             <Box as="nav" flex={1}>
                 <HStack
-                    paddingX={{ base: '1.5625em', md: '3.125rem' }}
+                    paddingX={{ base: '25px', md: '3.125rem' }}
                     transitionDuration="0.25s"
                     transitionProperty="all"
                     justifyContent="space-between"
@@ -111,6 +112,17 @@ export function NavBar() {
                             Resume
                         </Link>
                     </HStack>
+                    <HamburgerButton
+                        initial={{ y: -100, opacity: 0 }}
+                        animate={{
+                            y: 0,
+                            opacity: 1,
+                            transition: { delay: 0.4, type: 'tween' },
+                        }}
+                        variant="outlined"
+                        isTriggered={false}
+                        display={{ base: 'initial', md: 'none' }}
+                    />
                 </HStack>
             </Box>
         </Center>
