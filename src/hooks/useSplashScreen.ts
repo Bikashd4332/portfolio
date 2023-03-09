@@ -15,7 +15,7 @@ const useSplashScreen = ({ durationInSeconds }: UseSplashScreenProps) => {
         setTimeout(() => {
             finnishLoading();
         }, durationInSeconds * 1000);
-    }, [isSplashScreenPlaying]);
+    }, [isSplashScreenPlaying, durationInSeconds]);
 
     return isSplashScreenPlaying;
 };
