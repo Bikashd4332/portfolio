@@ -1,5 +1,5 @@
 import { Flex, Heading, Text, Link, Box as NonAnimatedBox } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 import { Box } from '@/components/Box';
 
@@ -12,7 +12,7 @@ interface HeroSectionProps {
     currentCompanyInfo: CompanyInfo;
 }
 
-const parentVariants = {
+const parentVariants: Variants = {
     initial: {
         opacity: 0,
     },
