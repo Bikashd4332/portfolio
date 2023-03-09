@@ -1,6 +1,6 @@
 import { VStack, Icon, Link, ListItem, UnorderedList } from '@chakra-ui/react';
 import { Box } from '@/components/Box';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 import { Github, CodePen, Instagram, LinkedIn, Twitter } from '@/components/Icons';
 
@@ -61,7 +61,7 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
     );
 };
 
-const parentVariants = {
+const parentVariants: Variants = {
     initial: { opacity: 0 },
     show: {
         opacity: 1,
