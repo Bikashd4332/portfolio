@@ -1,61 +1,44 @@
-import { useEffect, useState } from 'react';
-import { HStack, Link, chakra, shouldForwardProp, Center, useBreakpoint } from '@chakra-ui/react';
-import { motion, isValidMotionProp, Variants } from 'framer-motion';
+import { HStack, Center, useDisclosure, ChakraProps } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+
 import { Box } from '@/components/Box';
 import Logo from '@/svgs/logo.svg';
 import { useScrollDirection, ScrollDirectionEnum } from '@/hooks/useScrollDirecton';
+import { useIsScrolledToTop } from '@/hooks/useIsScrolledToTop';
+
 import { HamburgerButton } from './HamburgerButton';
-
-const OrderedList = chakra(motion.ol, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
-
-const ListItem = chakra(motion.li, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
-
-const navBarAnimation: Variants = {
-    show: {
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-};
-
-const navBarLinksAnimation: Variants = {
-    initial: { y: -100, opacity: 0 },
-    show: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            type: 'tween',
-        },
-    },
-};
+import { NavBarLinkGroup } from './NavBarLinkGroup';
+import { NavbarDrawer } from './NavDrawer';
 
 const NAVBAR_HEIGHT = 70;
 const NAVBAR_HEIGHT_SNAPPED = 100;
 
-const NAVBAR_LINK_MAPPING = [
-    { linksTo: '/#about', label: 'About' },
-    { linksTo: '/#experience', label: 'Experience' },
-    { linksTo: '/#work', label: 'Work' },
-    { linksTo: '/#contact', label: 'Contact' },
-] as const;
+function getStylesForScrolledToTop(
+    isScrolledToTop: boolean,
+    scrollDir: ScrollDirectionEnum,
+): ChakraProps {
+    if (isScrolledToTop) {
+        return {
+            height: `${NAVBAR_HEIGHT_SNAPPED}px`,
+        };
+    }
+
+    return {
+        height: `${NAVBAR_HEIGHT}px`,
+        boxShadow: '0 10px 30px -10px rgba(2, 12, 27, 0.7)',
+        // NOTE: if scrolling down then user wants to read, hide navbar (clutter)
+        // if user is scrolling up then user might want to go somewhere, show the navbar
+        transform:
+            scrollDir === ScrollDirectionEnum.DOWN
+                ? `translateY(calc(${NAVBAR_HEIGHT}px * -1))`
+                : `translateY(0)`,
+    };
+}
 
 export function NavBar() {
     const scrollDir = useScrollDirection({ initialScrollDir: ScrollDirectionEnum.UP });
-    const [isScrollToTop, setIsScrollToTop] = useState(true);
-
-    const handleScroll = () => {
-        setIsScrollToTop(window.scrollY < 50);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.addEventListener('scroll', handleScroll);
-    }, []);
+    const isScrolledToTop = useIsScrolledToTop();
+    const { isOpen: isDrawerOpen, onToggle: onDrawerToggle } = useDisclosure();
 
     return (
         <Center
@@ -63,16 +46,7 @@ export function NavBar() {
             position="fixed"
             top="0"
             width="100vw"
-            {...(isScrollToTop
-                ? { height: `${NAVBAR_HEIGHT_SNAPPED}px` }
-                : {
-                      height: `${NAVBAR_HEIGHT}px`,
-                      transform:
-                          scrollDir === ScrollDirectionEnum.DOWN
-                              ? `translateY(calc(${NAVBAR_HEIGHT}px * -1))`
-                              : `translateY(0)`,
-                      boxShadow: '0 10px 30px -10px rgba(2, 12, 27, 0.7)',
-                  })}
+            {...getStylesForScrolledToTop(isScrolledToTop, scrollDir)}
             backdropFilter="blur(10px)"
             zIndex={11}
             transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
@@ -95,69 +69,21 @@ export function NavBar() {
                     >
                         <Logo />
                     </Box>
-                    <HStack gap="4" display={{ base: 'none', md: 'flex' }}>
-                        <NavBarLinks />
-                        <Link
-                            as={motion.a}
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{
-                                y: 0,
-                                opacity: 1,
-                                transition: { delay: 0.4, type: 'tween' },
-                            }}
-                            variant="outlined"
-                            size="md"
-                            href="/resume"
-                        >
-                            Resume
-                        </Link>
-                    </HStack>
+                    <NavBarLinkGroup display={{ base: 'none', md: 'flex' }} />
                     <HamburgerButton
-                        initial={{ y: -100, opacity: 0 }}
+                        onClick={onDrawerToggle}
+                        initial={{ opacity: 0 }}
                         animate={{
-                            y: 0,
                             opacity: 1,
                             transition: { delay: 0.4, type: 'tween' },
                         }}
                         variant="outlined"
-                        isTriggered={false}
+                        isTriggered={isDrawerOpen}
                         display={{ base: 'initial', md: 'none' }}
                     />
+                    <NavbarDrawer isOpen={isDrawerOpen} onClose={onDrawerToggle} />
                 </HStack>
             </Box>
         </Center>
     );
 }
-const NavBarLinks = () => {
-    return (
-        <OrderedList
-            as={motion.ol}
-            variants={navBarAnimation}
-            initial="initial"
-            animate="show"
-            fontSize="xs"
-            color="cement"
-        >
-            <HStack>
-                {NAVBAR_LINK_MAPPING.map((link, index) => (
-                    <ListItem key={link.linksTo} margin="0" variants={navBarLinksAnimation}>
-                        <Link
-                            padding="2.5"
-                            fontSize="0.8125rem"
-                            href={link.linksTo}
-                            color="slate.50"
-                            _hover={{
-                                color: 'lightteal.700',
-                            }}
-                        >
-                            <Box as="span" color="lightteal.700" fontSize="xs">
-                                {`0${index + 1}.`}
-                            </Box>{' '}
-                            {link.label}
-                        </Link>
-                    </ListItem>
-                ))}
-            </HStack>
-        </OrderedList>
-    );
-};
