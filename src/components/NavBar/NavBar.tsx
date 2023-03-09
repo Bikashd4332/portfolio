@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HStack, Link, chakra, shouldForwardProp, Center } from '@chakra-ui/react';
-import { motion, isValidMotionProp } from 'framer-motion';
+import { motion, isValidMotionProp, Variants } from 'framer-motion';
 import { Box } from '@/components/Box';
 import Logo from '@/svgs/logo.svg';
 import { useScrollDirection, ScrollDirectionEnum } from '@/hooks/useScrollDirecton';
@@ -13,7 +13,7 @@ const ListItem = chakra(motion.li, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
 });
 
-const navBarAnimation = {
+const navBarAnimation: Variants = {
     show: {
         transition: {
             staggerChildren: 0.1,
@@ -21,7 +21,7 @@ const navBarAnimation = {
     },
 };
 
-const navBarLinksAnimation = {
+const navBarLinksAnimation: Variants = {
     initial: { y: -100, opacity: 0 },
     show: {
         y: 0,
