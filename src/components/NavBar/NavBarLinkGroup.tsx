@@ -35,7 +35,7 @@ function NavBarLinkGroup(props: NavBarLinkGroupProps) {
                 animate="show"
                 variants={resumeButtonAnimation}
                 variant="outlined"
-                size="md"
+                size={{ base: 'lg', md: 'md' }}
                 href="/resume"
             >
                 Resume
