@@ -38,7 +38,11 @@ function getStylesForScrolledToTop(
 export function NavBar() {
     const scrollDir = useScrollDirection({ initialScrollDir: ScrollDirectionEnum.UP });
     const isScrolledToTop = useIsScrolledToTop();
-    const { isOpen: isDrawerOpen, onToggle: onDrawerToggle } = useDisclosure();
+    const {
+        isOpen: isDrawerOpen,
+        onToggle: onDrawerToggle,
+        onClose: onDrawerClose,
+    } = useDisclosure();
 
     return (
         <Center
@@ -81,7 +85,7 @@ export function NavBar() {
                         isTriggered={isDrawerOpen}
                         display={{ base: 'initial', md: 'none' }}
                     />
-                    <NavbarDrawer isOpen={isDrawerOpen} onClose={onDrawerToggle} />
+                    <NavbarDrawer isOpen={isDrawerOpen} onClose={onDrawerClose} />
                 </HStack>
             </Box>
         </Center>
