@@ -61,8 +61,8 @@ function NavBarLinks({ isNoAnimation = false }: NavBarLinkProps) {
                     <ListItem key={link.linksTo} margin="0" variants={linksAnimation}>
                         <Link
                             padding={{ base: '3px 20px 20px', md: 2.5 }}
-                            display={{ base: 'inline-block', md: 'initial' }}
-                            fontSize={{ base: '15.56px', md: '0.8125rem' }}
+                            display={{ base: 'block', md: 'initial' }}
+                            fontSize={{ base: '16.56px', md: '0.8125rem' }}
                             href={link.linksTo}
                             color="slate.50"
                             _hover={{
