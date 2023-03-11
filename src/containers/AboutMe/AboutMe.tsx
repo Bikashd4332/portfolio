@@ -35,6 +35,7 @@ function AboutMe() {
     return (
         <Box
             as={motion.section}
+            id="about-me"
             initial="initial"
             whileInView="show"
             variants={sectionAnimation}
