@@ -5,6 +5,7 @@ const globalStyles = {
         defineStyle({
             html: {
                 height: 'fill-available',
+                scrollBehavior: 'smooth',
             },
             body: {
                 bg: 'navyblue.600',

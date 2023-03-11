@@ -6,6 +6,7 @@ import { AnimatedLogo } from '@/components/AnimatedLogo';
 import { useSplashScreen } from '@/hooks/useSplashScreen';
 
 import { UseSplashScreenProps } from '@/hooks/useSplashScreen';
+import { useScrollIntoSection } from '@/hooks/useScrollIntoSection';
 
 interface SplashScreenProps extends UseSplashScreenProps {
     children: JSX.Element | JSX.Element[];
@@ -13,6 +14,7 @@ interface SplashScreenProps extends UseSplashScreenProps {
 
 export function SplashScreen({ durationInSeconds, children }: SplashScreenProps) {
     const isSplashScreenPlaying = useSplashScreen({ durationInSeconds });
+    useScrollIntoSection();
 
     if (!isSplashScreenPlaying) return <React.Fragment>{children}</React.Fragment>;
 
