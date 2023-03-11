@@ -1,9 +1,11 @@
-import { Stack, Link, shouldForwardProp, chakra } from '@chakra-ui/react';
+import { Stack, shouldForwardProp, chakra } from '@chakra-ui/react';
 import { motion, isValidMotionProp, Variants } from 'framer-motion';
+
+import { Link } from '@/components/Link';
 import { Box } from '@/components/Box';
 
 const NAVBAR_LINK_MAPPING = [
-    { linksTo: '/#about', label: 'About' },
+    { linksTo: '/#about-me', label: 'About' },
     { linksTo: '/#experience', label: 'Experience' },
     { linksTo: '/#work', label: 'Work' },
     { linksTo: '/#contact', label: 'Contact' },

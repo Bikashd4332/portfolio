@@ -1,6 +1,7 @@
-import { Stack, Link, StackProps } from '@chakra-ui/react';
+import { Stack, StackProps } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
+import { Link } from '@/components/Link';
 import { NavBarLinks, NavBarLinkProps } from './NavBarLinks';
 
 interface NavBarLinkGroupProps extends StackProps, NavBarLinkProps {}

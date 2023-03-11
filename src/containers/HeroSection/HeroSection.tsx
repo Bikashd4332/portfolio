@@ -1,6 +1,7 @@
-import { Flex, Heading, Text, Link, Box as NonAnimatedBox } from '@chakra-ui/react';
+import { Flex, Heading, Text, Box as NonAnimatedBox } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 
+import { Link } from '@/components/Link';
 import { Box } from '@/components/Box';
 
 export interface CompanyInfo {
@@ -96,6 +97,7 @@ export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
             </Text>
             <Link
                 as={motion.a}
+                href="/#about"
                 variants={childVariants}
                 variant="outlined"
                 size="lg"
