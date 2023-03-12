@@ -1,15 +1,35 @@
 import { useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 
-function useScrollIntoSection() {
+interface UseScrollIntoSectionProps {
+    isSplashScreenPlaying: boolean;
+}
+
+function useScrollIntoSection({ isSplashScreenPlaying }: UseScrollIntoSectionProps) {
     const router = useRouter();
+
+    const scrollToSection = useCallback((hash: string) => {
+        setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (!element) return;
+            element.scrollIntoView({ behavior: 'smooth' });
+        }, 0);
+    }, []);
+
+    // NOTE: if ther's already a hash in the url while loading, scroll into that
+    useEffect(() => {
+        if (isSplashScreenPlaying) return;
+
+        const hash = router.asPath.substring(2);
+        if (!hash) return;
+
+        scrollToSection(hash);
+    }, [isSplashScreenPlaying, scrollToSection, router.asPath]);
 
     // NOTE: hashChangeStart event handler for router
     const routeHashChangeStart = useCallback((pathname: string) => {
         const hash = pathname.substring(2); // with out "/#"  e.g: '/#{hash} -> hash'
-        const element = document.getElementById(hash);
-        if (!element) return;
-        element.scrollIntoView({ behavior: 'smooth' });
+        scrollToSection(hash);
     }, []);
 
     useEffect(() => {
@@ -18,7 +38,7 @@ function useScrollIntoSection() {
         return () => {
             router.events.off('hashChangeStart', routeHashChangeStart);
         };
-    }, [routeHashChangeStart]);
+    }, [routeHashChangeStart, router.events]);
 }
 
 export { useScrollIntoSection };

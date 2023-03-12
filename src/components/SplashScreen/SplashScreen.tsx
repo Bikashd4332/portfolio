@@ -14,7 +14,7 @@ interface SplashScreenProps extends UseSplashScreenProps {
 
 export function SplashScreen({ durationInSeconds, children }: SplashScreenProps) {
     const isSplashScreenPlaying = useSplashScreen({ durationInSeconds });
-    useScrollIntoSection();
+    useScrollIntoSection({ isSplashScreenPlaying });
 
     if (!isSplashScreenPlaying) return <React.Fragment>{children}</React.Fragment>;
 

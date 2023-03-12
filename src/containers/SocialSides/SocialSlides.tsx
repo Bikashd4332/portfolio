@@ -50,7 +50,7 @@ const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
                         }}
                     >
                         <Link href={url} padding="10px" target="_blank" rel="noopener noreferrer">
-                            <Icon w="20px" preserveAspectRatio="1">
+                            <Icon w="20px" h="20px">
                                 <SvgIcon />;
                             </Icon>
                         </Link>
