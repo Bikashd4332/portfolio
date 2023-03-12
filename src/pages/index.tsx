@@ -6,6 +6,7 @@ import { NavBar } from '@/components/NavBar';
 import { SocialSides } from '@/containers/SocialSides';
 import { SplashScreen } from '@/components/SplashScreen';
 import { AboutMe } from '@/containers/AboutMe';
+import { Experience } from '@/containers/Experience';
 
 const SPLASH_SCREEN_DURATION_IN_SECONDS = 2;
 
@@ -23,6 +24,7 @@ export default function Index() {
                     <HeroSection currentCompanyInfo={CURRENT_COMPANY_INFO} />
                     <SocialSides />
                     <AboutMe />
+                    <Experience />
                 </Container>
             </SplashScreen>
         </AnimatePresence>

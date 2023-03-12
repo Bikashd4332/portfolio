@@ -28,11 +28,11 @@ const Heading = defineStyleConfig({
             whiteSpace: 'nowrap',
 
             '::before': {
-                content: `"0" counter(section) "."`,
                 counterIncrement: 'section 1',
+                content: `"0" counter(section) "."`,
                 position: 'relative',
                 top: '6px',
-                bototm: '4px',
+                bottom: '4px',
                 fontFamily: 'mono',
                 color: 'lightteal.700',
                 mr: '10px',
