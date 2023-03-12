@@ -34,7 +34,9 @@ function Tabs(props: TabsProps) {
         >
             <TabList>
                 {tabs.map((tab) => (
-                    <Tab {...tabProps}>{tab}</Tab>
+                    <Tab {...tabProps} key={tab}>
+                        {tab}
+                    </Tab>
                 ))}
                 <ChakraBox
                     className="tab-border"
@@ -45,8 +47,10 @@ function Tabs(props: TabsProps) {
                 />
             </TabList>
             <TabPanels>
-                {tabPanels.map((TabContent) => (
-                    <TabPanel {...tabPanelProps}>{TabContent}</TabPanel>
+                {tabPanels.map((TabContent, index) => (
+                    <TabPanel {...tabPanelProps} key={String(index)}>
+                        {TabContent}
+                    </TabPanel>
                 ))}
             </TabPanels>
         </ChakraTabs>

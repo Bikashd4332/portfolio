@@ -25,7 +25,7 @@ function NavbarDrawer({ isOpen, onClose }: NavbarDrawerProps) {
         router.events.on('hashChangeComplete', closeDrawer);
 
         return () => router.events.off('hashChangeComplete', closeDrawer);
-    }, [onClose]);
+    }, [onClose, router.events]);
 
     return (
         <Portal>
