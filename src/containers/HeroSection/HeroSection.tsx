@@ -97,7 +97,7 @@ export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
             </Text>
             <Link
                 as={motion.a}
-                href="/#about"
+                href="/#about-me"
                 variants={childVariants}
                 variant="outlined"
                 size="lg"
