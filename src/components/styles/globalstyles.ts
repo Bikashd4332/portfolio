@@ -48,10 +48,7 @@ const globalStyles = {
                 borderWidth: '3px',
                 borderStyle: 'solid',
                 borderColor: 'navyblue.700',
-            },
-
-            '::-webkit-scrollbar-track': {
-                bgColor: 'navyblue.700',
+                borderRadius: '10px',
             },
         }),
 };

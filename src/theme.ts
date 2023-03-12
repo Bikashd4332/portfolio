@@ -1,9 +1,10 @@
 import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react';
 
-import Link from './components/styles/link';
-import Heading from './components/styles/heading';
-import Container from './components/styles/container';
-import globalStyles from './components/styles/globalstyles';
+import Link from '@/components/styles/link';
+import Heading from '@/components/styles/heading';
+import Container from '@/components/styles/container';
+import Tabs from '@/components/styles/tabs';
+import globalStyles from '@/components/styles/globalstyles';
 
 const fonts = {
     mono: `"SF Mono","Fira Code","Fira Mono","Roboto Mono",monospace`,
@@ -48,7 +49,7 @@ const theme = extendBaseTheme({
     fonts,
     breakpoints,
     fontSizes,
-    components: { Link, Heading, Container },
+    components: { Link, Heading, Container, Tabs },
     styles: { ...globalStyles },
 } as Partial<ChakraTheme>);
 
