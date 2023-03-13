@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { MouseEventHandler, ReactNode, useState } from 'react';
 import {
     Tabs as ChakraTabs,
     Box as ChakraBox,
@@ -22,6 +22,12 @@ function Tabs(props: TabsProps) {
     const { tabs, tabPanels, tabProps, tabPanelProps } = props;
     const [activeTabIndex, setActiveTabIndex] = useState<number>();
 
+    const onClickTabScrollIntoIt: MouseEventHandler = (event) => {
+        const el = event.target as HTMLButtonElement;
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.focus();
+    };
+
     const onChangeActiveTabIndex = (index: number) => {
         setActiveTabIndex(index);
     };
@@ -32,7 +38,7 @@ function Tabs(props: TabsProps) {
             variant={{ base: 'line', md: 'wider' }}
             onChange={onChangeActiveTabIndex}
         >
-            <TabList>
+            <TabList onClick={onClickTabScrollIntoIt}>
                 {tabs.map((tab) => (
                     <Tab {...tabProps} key={tab}>
                         {tab}
