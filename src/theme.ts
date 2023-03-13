@@ -47,6 +47,8 @@ const zIndices = {
     drawer: 9,
     drawerToggler: 10,
     navbar: 11,
+    animatedImageWrapper: 1,
+    tablist: 3,
 };
 
 const theme = extendBaseTheme({

@@ -29,7 +29,7 @@ function AnimatedImage({ alt: imageAlt, src: imageSrc, ...rest }: AnimatedImageP
             }}
         >
             <ChakraBox
-                zIndex={1}
+                zIndex="animatedImageWrapper"
                 position="relative"
                 mixBlendMode="multiply"
                 filter="grayscale(100%) contrast(1)"

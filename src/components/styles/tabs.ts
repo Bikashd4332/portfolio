@@ -58,7 +58,7 @@ const lineVariant = definePartsStyle({
     tablist: {
         overflowX: 'auto',
         position: 'relative',
-        zIndex: 3,
+        zIndex: 'tablist',
         paddingLeft: '25px',
         marginLeft: '-25px',
         marginBottom: '30px',

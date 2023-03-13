@@ -55,7 +55,7 @@ export function NavBar() {
             top="0"
             width="100vw"
             {...getStylesForScrolledToTop(isScrolledToTop, scrollDir)}
-            zIndex={11}
+            zIndex="navbar"
             transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
         >
             <Box as="nav" flex={1}>
@@ -87,7 +87,7 @@ export function NavBar() {
                         }}
                         variant="outlined"
                         isTriggered={isDrawerOpen}
-                        zIndex={9}
+                        zIndex="drawerToggler"
                         display={{ base: 'initial', md: 'none' }}
                         // NOTE: This is required to not make it move when navdrawer opens.
                         position="absolute"
