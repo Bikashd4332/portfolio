@@ -43,12 +43,19 @@ const fontSizes = {
     heading: '32px',
 };
 
+const zIndices = {
+    drawer: 9,
+    drawerToggler: 10,
+    navbar: 11,
+};
+
 const theme = extendBaseTheme({
     radii,
     colors,
     fonts,
     breakpoints,
     fontSizes,
+    zIndices,
     components: { Link, Heading, Container, Tabs },
     styles: { ...globalStyles },
 } as Partial<ChakraTheme>);
