@@ -3,39 +3,25 @@ import { Box } from '@/components/Box';
 import { motion, Variants } from 'framer-motion';
 
 import { Github, CodePen, Instagram, LinkedIn, Twitter } from '@/components/Icons';
+import { config } from '@/config';
 
 const EMAIL = 'bikashd4332@gmail.com';
-const ACCOUNT_MAPS = {
-    github: {
-        iconComp: Github,
-        href: 'https://github.com/bikashd4332',
-    },
-    codepen: {
-        iconComp: CodePen,
-        href: 'https://codepen.io/bikashd4332/',
-    },
-    instagram: {
-        iconComp: Instagram,
-        href: 'https://instagram.com/bikdashing',
-    },
-    twitter: {
-        iconComp: Twitter,
-        href: 'https://twitter.com/bikashd4332',
-    },
-    linkedin: {
-        iconComp: LinkedIn,
-        href: 'https://www.linkedin.com/in/bikash-das-2a689a151',
-    },
+const ICON_MAPS = {
+    github: Github,
+    codepen: CodePen,
+    instagram: Instagram,
+    twitter: Twitter,
+    linkedin: LinkedIn,
 } as const;
 
-const renderSocials = (socials: typeof ACCOUNT_MAPS) => {
-    const socialsToRender = Object.keys(socials) as (keyof typeof ACCOUNT_MAPS)[];
+const renderSocials = (socials: typeof config['SOCIAL_ACCOUNTS']) => {
+    const socialsToRender = Object.keys(socials) as (keyof typeof socials)[];
 
     return (
         <>
             {socialsToRender.map((social) => {
-                const SvgIcon = socials[social]?.iconComp;
-                const url = socials[social]?.href;
+                const SvgIcon = ICON_MAPS[social];
+                const url = socials[social];
                 return (
                     <ListItem
                         as={motion.li}
@@ -88,7 +74,7 @@ const SocialSides = () => {
                 left={{ base: '20px', lg: '40px' }}
                 bottom="0"
             >
-                {renderSocials(ACCOUNT_MAPS)}
+                {renderSocials(config.SOCIAL_ACCOUNTS)}
                 <Box as="span" width="1px" bg="slate.50" height="90px" display="inline-block" />
             </VStack>
 

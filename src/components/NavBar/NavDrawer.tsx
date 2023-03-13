@@ -5,17 +5,18 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerBody,
-    Portal,
     UseDisclosureReturn,
     Center,
-    Box as ChakraBox,
+    PortalProps,
 } from '@chakra-ui/react';
 
 import { NavBarLinkGroup } from './NavBarLinkGroup';
 
-interface NavbarDrawerProps extends Pick<UseDisclosureReturn, 'isOpen' | 'onClose'> {}
+interface NavbarDrawerProps extends Pick<UseDisclosureReturn, 'isOpen' | 'onClose'> {
+    portalProps: Partial<PortalProps>;
+}
 
-function NavbarDrawer({ isOpen, onClose }: NavbarDrawerProps) {
+function NavbarDrawer({ isOpen, onClose, portalProps }: NavbarDrawerProps) {
     const router = useRouter();
 
     useEffect(() => {
@@ -28,18 +29,22 @@ function NavbarDrawer({ isOpen, onClose }: NavbarDrawerProps) {
     }, [onClose, router.events]);
 
     return (
-        <Portal>
-            <Drawer isOpen={isOpen} onClose={onClose} placement="right">
-                <DrawerOverlay />
-                <DrawerContent maxW="min(75vw, 400px)" backgroundColor="navyblue.300">
-                    <DrawerBody as={Center}>
-                        <ChakraBox padding="50px 10px" width="100%">
-                            <NavBarLinkGroup isNoAnimation height="100vh" textAlign="center" />
-                        </ChakraBox>
-                    </DrawerBody>
-                </DrawerContent>
-            </Drawer>
-        </Portal>
+        <Drawer
+            isOpen={isOpen}
+            onClose={onClose}
+            placement="right"
+            portalProps={portalProps}
+            closeOnOverlayClick
+        >
+            <DrawerOverlay backdropFilter="auto" backdropBlur="sm" />
+            <DrawerContent maxW="min(75vw, 400px)" backgroundColor="navyblue.300" height="100vh">
+                <DrawerBody as={Center}>
+                    <Center padding="50px 10px" width="100%" height="100vh">
+                        <NavBarLinkGroup isNoAnimation textAlign="center" />
+                    </Center>
+                </DrawerBody>
+            </DrawerContent>
+        </Drawer>
     );
 }
 
