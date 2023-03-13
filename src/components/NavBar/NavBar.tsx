@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { HStack, Center, useDisclosure, ChakraProps } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
@@ -27,6 +28,7 @@ function getStylesForScrolledToTop(
         height: `${NAVBAR_HEIGHT}px`,
         bgColor: 'rgba(10, 25, 47, 0.85)',
         boxShadow: '0 10px 30px -10px rgba(2, 12, 27, 0.7)',
+        backdropFilter: 'blur(10px)',
         // NOTE: if scrolling down then user wants to read, hide navbar (clutter)
         // if user is scrolling up then user might want to go somewhere, show the navbar
         transform:
@@ -44,6 +46,7 @@ export function NavBar() {
         onToggle: onDrawerToggle,
         onClose: onDrawerClose,
     } = useDisclosure();
+    const containerRef = useRef<HTMLDivElement>(null);
 
     return (
         <Center
@@ -52,7 +55,6 @@ export function NavBar() {
             top="0"
             width="100vw"
             {...getStylesForScrolledToTop(isScrolledToTop, scrollDir)}
-            backdropFilter="blur(10px)"
             zIndex={11}
             transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
         >
@@ -62,6 +64,7 @@ export function NavBar() {
                     transitionDuration="0.25s"
                     transitionProperty="all"
                     justifyContent="space-between"
+                    ref={containerRef}
                 >
                     <Box
                         as={motion.a}
@@ -84,9 +87,23 @@ export function NavBar() {
                         }}
                         variant="outlined"
                         isTriggered={isDrawerOpen}
+                        zIndex={9}
                         display={{ base: 'initial', md: 'none' }}
+                        // NOTE: This is required to not make it move when navdrawer opens.
+                        position="absolute"
+                        right="25px"
                     />
-                    <NavbarDrawer isOpen={isDrawerOpen} onClose={onDrawerClose} />
+                    <NavbarDrawer
+                        isOpen={isDrawerOpen}
+                        onClose={onDrawerClose}
+                        /* NOTE: this is reuiqred for rendering navdrawer here
+                         * common to the parent of HamBurgerButton
+                         */
+                        portalProps={{
+                            containerRef,
+                            appendToParentPortal: false,
+                        }}
+                    />
                 </HStack>
             </Box>
         </Center>
