@@ -3,6 +3,7 @@ import { ChakraBaseProvider } from '@chakra-ui/react';
 import localFont from '@next/font/local';
 
 import theme from '@/theme';
+import { SWRProvider } from '@/providers/SWRProvider';
 
 const sfMono = localFont({
     src: [
@@ -47,9 +48,11 @@ const calibreFont = localFont({
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ChakraBaseProvider theme={theme} resetCSS>
-            <div className={`${sfMono.className} ${calibreFont.className}`}>
-                <Component {...pageProps} />
-            </div>
+            <SWRProvider>
+                <div className={`${sfMono.className} ${calibreFont.className}`}>
+                    <Component {...pageProps} />
+                </div>
+            </SWRProvider>
         </ChakraBaseProvider>
     );
 }
