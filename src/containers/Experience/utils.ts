@@ -2,7 +2,7 @@ import { CareerHistoryCollectionResult } from '@/services/useExperience';
 
 export function getUniqueCompanies(data: CareerHistoryCollectionResult | undefined) {
 
-  if (!data) return [];
+  if (!data) {
 
   const { careerHistoryCollection: { items } }  = data;
 
