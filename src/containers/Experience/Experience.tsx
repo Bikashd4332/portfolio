@@ -12,7 +12,7 @@ function Experience() {
     const uniqueCompanies = getUniqueCompanies(data);
 
     const tabPanels = uniqueCompanies.map((companyName) => {
-        if (!data) return null;
+        if (!data) {
 
         const careerHistoryGroup = data.careerHistoryCollection.items.filter(
             (item) => item.companyName === companyName
