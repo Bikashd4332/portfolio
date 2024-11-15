@@ -15,7 +15,7 @@ export default function Index() {
             <SplashScreen durationInSeconds={config.SPLASH_SCREEN_DURATION_IN_SECONDS}>
                 <NavBar />
                 <Container as="main">
-                    <HeroSection currentCompanyInfo={config.CURRENT_COMPANY_INFO} />
+                    <HeroSection />
                     <SocialSides />
                     <AboutMe />
                     <Experience />

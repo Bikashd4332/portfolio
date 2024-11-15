@@ -3,15 +3,7 @@ import { motion, Variants } from 'framer-motion';
 
 import { Link } from '@/components/Link';
 import { Box } from '@/components/Box';
-
-export interface CompanyInfo {
-    name: string;
-    url: string;
-}
-
-interface HeroSectionProps {
-    currentCompanyInfo: CompanyInfo;
-}
+import { useHeroSectionContent } from '@/services/useHeroSectionContent';
 
 const parentVariants: Variants = {
     initial: {
@@ -42,7 +34,13 @@ const childVariants = {
     },
 };
 
-export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
+export function HeroSection() {
+    const { data } = useHeroSectionContent();
+
+    const firstHeroEntry = data?.portfolioHeroSectionCollection.items[0];
+
+    const { heroText, introductionLine, name, summary } = firstHeroEntry || {};
+
     return (
         <Flex
             as={motion.section}
@@ -63,12 +61,12 @@ export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
                     marginBottom={{ base: 5, md: '1.875em' }}
                     marginLeft={{ base: 0.5, md: 1 }}
                 >
-                    Hi, my name is
+                    {introductionLine}
                 </Heading>
             </Box>
             <NonAnimatedBox fontSize="clamp(40px, 8vw, 80px)">
                 <Heading as={motion.h1} variants={childVariants} variant="secondary" margin="0px">
-                    Bikash Das.
+                    {name}.
                 </Heading>
                 <Heading
                     as={motion.h1}
@@ -77,7 +75,7 @@ export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
                     marginTop="5px"
                     marginBottom="0"
                 >
-                    I build things for the Web.
+                    {heroText}
                 </Heading>
             </NonAnimatedBox>
 
@@ -87,13 +85,7 @@ export function HeroSection({ currentCompanyInfo }: HeroSectionProps) {
                 marginTop={{ base: '1.25rem', md: '1.25rem', lg: '2rem' }}
                 maxWidth="580px"
             >
-                I’m a software engineer specializing in building (and occasionally designing)
-                exceptional digital experiences. Currently, I’m focused on building accessible,
-                human-centered products at{' '}
-                <Link href={currentCompanyInfo.url} variant="inline" target="_blank">
-                    {currentCompanyInfo.name}
-                </Link>
-                .
+                {summary}
             </Text>
             <Link
                 as={motion.a}
