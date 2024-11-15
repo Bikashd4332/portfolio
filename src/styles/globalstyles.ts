@@ -16,6 +16,7 @@ const globalStyles = {
                 fontSize: { base: 'lg', md: '17px' },
                 lineHeight: '1.3',
                 color: 'slate.700',
+                'counter-reset': "section",
             },
             p: {
                 color: 'slate.700',

@@ -1,12 +1,7 @@
-import { CompanyInfo } from './containers/HeroSection';
 
 const config = {
     EMAIL: 'bikashd4332@gmail.com',
     SPLASH_SCREEN_DURATION_IN_SECONDS: 2,
-    CURRENT_COMPANY_INFO: {
-        name: 'Classicinformatics',
-        url: 'https://classicinformatics.com',
-    } as CompanyInfo,
     SOCIAL_ACCOUNTS: {
         github: 'https://github.com/bikashd4332',
         codepen: 'https://codepen.io/bikashd4332/',
