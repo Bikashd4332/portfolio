@@ -51,7 +51,7 @@ function AboutMe() {
                         overflow="hidden"
                         listStyleType="none"
                     >
-                        {techSkill?.technologies?.map?.((technology) => (
+                        {(techSkill?.technologies || []).map((technology) => (
                             <ListItem key={technology} fontFamily="mono" fontSize="13px">
                                 <Box as="span" color="lightteal.700" pr="10px">
                                     ▹
