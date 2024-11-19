@@ -1,7 +1,15 @@
+import { FeaturedProject } from '@/services/useGetFeaturedProjects';
 import { Box, Text } from '@chakra-ui/react';
 import { ProjectTechList } from './ProjectTechList';
 
-function ProjectDescription() {
+type ProjectDescriptionProps = Omit<
+  FeaturedProject,
+  'id' | 'projectImagesCollection'
+>;
+
+function ProjectDescription(props: ProjectDescriptionProps) {
+  const { description, name, techStack } = props;
+
   return (
     <>
       <Box
@@ -21,7 +29,7 @@ function ProjectDescription() {
             Featured Project
           </Text>
           <Text fontSize="clamp(24px, 5vw, 28px)" mb="20px">
-            Halycon Theme
+            {name}
           </Text>
           <Box
             boxShadow="0 10px 30px -15px var(--navy-shadow)"
@@ -29,11 +37,9 @@ function ProjectDescription() {
             rounded="md"
             backgroundColor="navyblue.300"
           >
-            A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm,
-            and more. Available on Visual Studio Marketplace, Package Control,
-            Atom Package Manager, and npm.
+            {description}
           </Box>
-          <ProjectTechList />
+          <ProjectTechList {...{ techStack }} />
         </Box>
       </Box>
     </>

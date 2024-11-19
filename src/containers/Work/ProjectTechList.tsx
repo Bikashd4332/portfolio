@@ -1,6 +1,11 @@
+import { FeaturedProject } from '@/services/useGetFeaturedProjects';
 import { ListItem, UnorderedList } from '@chakra-ui/react';
 
-function ProjectTechList() {
+type ProjectTechListProps = Pick<FeaturedProject, 'techStack'>;
+
+function ProjectTechList(props: ProjectTechListProps) {
+  const { techStack } = props;
+
   return (
     <UnorderedList
       className="project-tech-list"
@@ -16,10 +21,9 @@ function ProjectTechList() {
         },
       }}
     >
-      <ListItem>VSCode</ListItem>
-      <ListItem>Sublime Text</ListItem>
-      <ListItem>iTerm2</ListItem>
-      <ListItem>Hyper</ListItem>
+      {techStack.map((tech) => (
+        <ListItem key={tech}>{tech}</ListItem>
+      ))}
     </UnorderedList>
   );
 }

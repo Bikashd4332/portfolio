@@ -1,12 +1,17 @@
+import { FeaturedProject } from '@/services/useGetFeaturedProjects';
 import { ProjectContainer } from './ProjectContainer';
 import { ProjectDescription } from './ProjectDescription';
 import { ProjectImage } from './ProjectImage';
 
-function ProjectContent() {
+type ProjectContentProps = FeaturedProject;
+
+function ProjectContent(props: ProjectContentProps) {
+  const { projectImagesCollection, ...rest } = props;
+
   return (
     <ProjectContainer>
-      <ProjectDescription />
-      <ProjectImage />
+      <ProjectDescription {...rest} />
+      <ProjectImage {...{ projectImagesCollection }} />
     </ProjectContainer>
   );
 }

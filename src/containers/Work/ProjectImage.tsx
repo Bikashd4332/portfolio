@@ -1,6 +1,13 @@
+import { FeaturedProject } from '@/services/useGetFeaturedProjects';
 import { Box, Link, Image } from '@chakra-ui/react';
 
-function ProjectImage() {
+type ProjectImageProps = Pick<FeaturedProject, 'projectImagesCollection'>;
+
+function ProjectImage(props: ProjectImageProps) {
+  const { projectImagesCollection } = props;
+
+  const image = projectImagesCollection?.items?.[0];
+
   return (
     <Box
       className="project-image"
@@ -11,7 +18,7 @@ function ProjectImage() {
     >
       <Box
         as={Link}
-        href="https://via.placeholder.com/800x600"
+        href={image?.url}
         rel="noopener noreferrer"
         target="_blank"
         width="100%"
@@ -50,7 +57,7 @@ function ProjectImage() {
             />
           </Box>
           <Image
-            src="https://via.placeholder.com/700x400"
+            src={image?.url}
             position="absolute"
             inset={0}
             width="100%"
