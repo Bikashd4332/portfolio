@@ -27,6 +27,9 @@ function ProjectImage(props: ProjectImageProps) {
         rounded="md"
         _hover={{
           background: 'transparent',
+          '& .img-wrapper': {
+            filter: 'none',
+          },
         }}
         verticalAlign="middle"
         display="block"
@@ -41,6 +44,7 @@ function ProjectImage(props: ProjectImageProps) {
         }}
       >
         <Box
+          className="img-wrapper"
           rounded="md"
           overflow="clip"
           mixBlendMode="multiply"
