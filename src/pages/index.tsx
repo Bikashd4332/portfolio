@@ -8,19 +8,25 @@ import { SplashScreen } from '@/components/SplashScreen';
 import { AboutMe } from '@/containers/AboutMe';
 import { Experience } from '@/containers/Experience';
 import { config } from '@/config';
+import { Work } from '@/containers/Work';
+import { ContactMe } from '@/containers/ContactMe';
 
 export default function Index() {
     return (
-        <AnimatePresence>
-            <SplashScreen durationInSeconds={config.SPLASH_SCREEN_DURATION_IN_SECONDS}>
-                <NavBar />
-                <Container as="main">
-                    <HeroSection />
-                    <SocialSides />
-                    <AboutMe />
-                    <Experience />
-                </Container>
-            </SplashScreen>
-        </AnimatePresence>
+      <AnimatePresence>
+        <SplashScreen
+          durationInSeconds={config.SPLASH_SCREEN_DURATION_IN_SECONDS}
+        >
+          <NavBar />
+          <Container as="main">
+            <HeroSection />
+            <SocialSides />
+            <AboutMe />
+            <Experience />
+            <Work />
+            <ContactMe />
+          </Container>
+        </SplashScreen>
+      </AnimatePresence>
     );
 }

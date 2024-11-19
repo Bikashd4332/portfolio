@@ -4,20 +4,7 @@ import { Heading, Grid, Text, VStack, UnorderedList, ListItem } from '@chakra-ui
 import { Box } from '@/components/Box';
 import { AnimatedImage } from '@/components/AnimatedImage';
 import { useAboutMe } from '@/services/useAboutMe';
-
-const sectionAnimation: Variants = {
-    initial: {
-        opacity: 0,
-        y: 50,
-    },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: '0.4',
-        },
-    },
-};
+import { SECTION_ANIMATION } from '../animation';
 
 function AboutMe() {
     const { data } = useAboutMe();
@@ -32,7 +19,7 @@ function AboutMe() {
             id="about-me"
             initial="initial"
             whileInView="show"
-            variants={sectionAnimation}
+            variants={SECTION_ANIMATION}
             viewport={{ amount: 0.4, once: true }}
         >
             <Heading as="h2" variant="numbered-heading">

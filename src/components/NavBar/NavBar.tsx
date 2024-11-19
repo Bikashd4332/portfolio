@@ -38,7 +38,7 @@ function getStylesForScrolledToTop(
     };
 }
 
-export function NavBar() {
+function NavBar() {
     const scrollDir = useScrollDirection({ initialScrollDir: ScrollDirectionEnum.UP });
     const isScrolledToTop = useIsScrolledToTop();
     const {
@@ -109,3 +109,5 @@ export function NavBar() {
         </Center>
     );
 }
+
+export { NavBar };

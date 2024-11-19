@@ -1,51 +1,11 @@
-import { VStack, Icon, Link, ListItem, UnorderedList } from '@chakra-ui/react';
 import { Box } from '@/components/Box';
+import { Link, UnorderedList, VStack } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 
-import { Github, CodePen, Instagram, LinkedIn, Twitter } from '@/components/Icons';
 import { config } from '@/config';
+import { renderSocials } from './utils';
 
 const EMAIL = 'bikashd4332@gmail.com';
-const ICON_MAPS = {
-    github: Github,
-    codepen: CodePen,
-    instagram: Instagram,
-    twitter: Twitter,
-    linkedin: LinkedIn,
-} as const;
-
-const renderSocials = (socials: typeof config['SOCIAL_ACCOUNTS']) => {
-    const socialsToRender = Object.keys(socials) as (keyof typeof socials)[];
-
-    return (
-        <>
-            {socialsToRender.map((social) => {
-                const SvgIcon = ICON_MAPS[social];
-                const url = socials[social];
-                return (
-                    <ListItem
-                        as={motion.li}
-                        key={social}
-                        _last={{ marginBottom: '20px' }}
-                        _hover={{
-                            color: 'lightteal.700',
-                        }}
-                        whileHover={{
-                            y: -1,
-                            transition: { duration: 0.1, type: 'tween' },
-                        }}
-                    >
-                        <Link href={url} padding="10px" target="_blank" rel="noopener noreferrer">
-                            <Icon w="20px" h="20px">
-                                <SvgIcon />;
-                            </Icon>
-                        </Link>
-                    </ListItem>
-                );
-            })}
-        </>
-    );
-};
 
 const parentVariants: Variants = {
     initial: { opacity: 0 },
@@ -57,7 +17,7 @@ const parentVariants: Variants = {
     },
 };
 
-const SocialSides = () => {
+function SocialSides() {
     return (
         <Box
             variants={parentVariants}

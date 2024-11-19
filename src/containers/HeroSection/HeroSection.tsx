@@ -42,63 +42,69 @@ export function HeroSection() {
     const { heroText, introductionLine, name, summary } = firstHeroEntry || {};
 
     return (
-        <Flex
-            as={motion.section}
-            direction="column"
-            justifyContent="center"
-            height="100vh"
-            minHeight="100vh"
-            padding="0"
-            variants={parentVariants}
-            animate="show"
-            initial="initial"
-        >
-            <Box variants={childVariants} width="max-content">
-                <Heading
-                    as="h1"
-                    fontSize={{ base: 'xs', md: 'md' }}
-                    fontWeight="medium"
-                    marginBottom={{ base: 5, md: '1.875em' }}
-                    marginLeft={{ base: 0.5, md: 1 }}
-                >
-                    {introductionLine}
-                </Heading>
-            </Box>
-            <NonAnimatedBox fontSize="clamp(40px, 8vw, 80px)">
-                <Heading as={motion.h1} variants={childVariants} variant="secondary" margin="0px">
-                    {name}.
-                </Heading>
-                <Heading
-                    as={motion.h1}
-                    variants={childVariants}
-                    variant="tertiary"
-                    marginTop="5px"
-                    marginBottom="0"
-                >
-                    {heroText}
-                </Heading>
-            </NonAnimatedBox>
+      <Flex
+        as={motion.section}
+        direction="column"
+        justifyContent="center"
+        height="100vh"
+        minHeight="100vh"
+        padding="0"
+        variants={parentVariants}
+        animate="show"
+        initial="initial"
+      >
+        <Box variants={childVariants} width="max-content">
+          <Heading
+            as="h1"
+            fontSize={{ base: 'xs', md: 'md' }}
+            fontWeight="medium"
+            marginBottom={{ base: 5, md: '1.875em' }}
+            marginLeft={{ base: 0.5, md: 1 }}
+          >
+            {introductionLine}
+          </Heading>
+        </Box>
+        <NonAnimatedBox fontSize="clamp(40px, 8vw, 80px)">
+          <Heading
+            as={motion.h1}
+            variants={childVariants}
+            variant="secondary"
+            margin="0px"
+          >
+            {name}.
+          </Heading>
+          <Heading
+            as={motion.h1}
+            variants={childVariants}
+            variant="tertiary"
+            marginTop="5px"
+            marginBottom="0"
+          >
+            {heroText}
+          </Heading>
+        </NonAnimatedBox>
 
-            <Text
-                as={motion.p}
-                variants={childVariants}
-                marginTop={{ base: '1.25rem', md: '1.25rem', lg: '2rem' }}
-                maxWidth="580px"
-            >
-                {summary}
-            </Text>
-            <Link
-                as={motion.a}
-                href="/#about-me"
-                variants={childVariants}
-                variant="outlined"
-                size="lg"
-                width="max-content"
-                display="inline-block"
-                marginTop="50px"
-            >
-                Let me introduce you!
-            </Link>
-        </Flex>
+        <Text
+          as={motion.p}
+          variants={childVariants}
+          marginTop={{ base: '1.25rem', md: '1.25rem', lg: '2rem' }}
+          maxWidth="580px"
+        >
+          {summary}
+        </Text>
+        <Link
+          type="button"
+          as={motion.a}
+          href="/#about-me"
+          variants={childVariants}
+          variant="outlined"
+          size="lg"
+          width="max-content"
+          display="inline-block"
+          marginTop="50px"
+        >
+          Let me introduce you!
+        </Link>
+      </Flex>
     );
 }

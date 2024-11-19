@@ -47,42 +47,42 @@ function NavBarLinks({ isNoAnimation = false }: NavBarLinkProps) {
     const linksAnimation = isNoAnimation ? {} : navBarLinksAnimation;
 
     return (
-        <OrderedList
-            as={motion.ol}
-            variants={listAnimation}
-            initial="initial"
-            animate="show"
-            fontSize="xs"
-            color="cement"
-            width={{ base: '100%', md: 'initial' }}
-        >
-            <Stack direction={{ base: 'column', md: 'row' }}>
-                {NAVBAR_LINK_MAPPING.map((link, index) => (
-                    <ListItem key={link.linksTo} margin="0" variants={linksAnimation}>
-                        <Link
-                            padding={{ base: '3px 20px 20px', md: 2.5 }}
-                            display={{ base: 'block', md: 'initial' }}
-                            fontSize={{ base: '16.56px', md: '0.8125rem' }}
-                            href={link.linksTo}
-                            color="slate.50"
-                            _hover={{
-                                color: 'lightteal.700',
-                            }}
-                        >
-                            <Box
-                                as="span"
-                                display={{ base: 'block', md: 'initial' }}
-                                color="lightteal.700"
-                                fontSize={{ base: '14px', md: 'xs' }}
-                            >
-                                {`0${index + 1}.`}
-                            </Box>{' '}
-                            {link.label}
-                        </Link>
-                    </ListItem>
-                ))}
-            </Stack>
-        </OrderedList>
+      <OrderedList
+        as={motion.ol}
+        variants={listAnimation}
+        initial="initial"
+        animate="show"
+        fontSize="xs"
+        color="cement"
+        width={{ base: '100%', md: 'initial' }}
+      >
+        <Stack direction={{ base: 'column', md: 'row' }}>
+          {NAVBAR_LINK_MAPPING.map((link, index) => (
+            <ListItem key={link.linksTo} margin="0" variants={linksAnimation}>
+              <Link
+                padding={{ base: '3px 20px 20px', md: 2.5 }}
+                display={{ base: 'block', md: 'initial' }}
+                fontSize={{ base: '16.56px', md: '0.8125rem' }}
+                href={link.linksTo}
+                color="slate.50"
+                _hover={{
+                  color: 'lightteal.700',
+                }}
+              >
+                <Box
+                  as="span"
+                  display={{ base: 'block', md: 'initial' }}
+                  color="lightteal.700"
+                  fontSize={{ base: '14px', md: 'xs' }}
+                >
+                  {`0${index + 1}.`}
+                </Box>{' '}
+                {link.label}
+              </Link>
+            </ListItem>
+          ))}
+        </Stack>
+      </OrderedList>
     );
 }
 

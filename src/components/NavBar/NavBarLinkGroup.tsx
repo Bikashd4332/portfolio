@@ -21,26 +21,28 @@ function NavBarLinkGroup(props: NavBarLinkGroupProps) {
     const resumeButtonAnimation = isNoAnimation ? {} : RESUME_BUTTON_ANIMATION;
 
     return (
-        <Stack
-            gap="4"
-            {...restProps}
-            direction={{ base: 'column', md: 'row' }}
-            alignItems={{ base: 'initial', md: 'center' }}
-            justifyContent={{ base: 'center', md: 'initial' }}
+      <Stack
+        gap="4"
+        {...restProps}
+        direction={{ base: 'column', md: 'row' }}
+        alignItems={{ base: 'initial', md: 'center' }}
+        justifyContent={{ base: 'center', md: 'initial' }}
+      >
+        <NavBarLinks isNoAnimation={isNoAnimation} />
+        <Link
+          type="button"
+          as={motion.a}
+          display="block"
+          initial="initial"
+          animate="show"
+          variants={resumeButtonAnimation}
+          variant="outlined"
+          size={{ base: 'lg', md: 'md' }}
+          href="/resume"
         >
-            <NavBarLinks isNoAnimation={isNoAnimation} />
-            <Link
-                as={motion.a}
-                initial="initial"
-                animate="show"
-                variants={resumeButtonAnimation}
-                variant="outlined"
-                size={{ base: 'lg', md: 'md' }}
-                href="/resume"
-            >
-                Resume
-            </Link>
-        </Stack>
+          Resume
+        </Link>
+      </Stack>
     );
 }
 
