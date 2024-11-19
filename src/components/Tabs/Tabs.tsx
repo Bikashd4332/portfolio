@@ -9,6 +9,7 @@ import {
     TabsProps as ChakraTabsProps,
     TabProps,
     TabPanelProps,
+    Text,
 } from '@chakra-ui/react';
 
 export interface TabsProps extends Omit<ChakraTabsProps, 'children'> {
@@ -34,8 +35,14 @@ function Tabs(props: TabsProps) {
         >
             <TabList>
                 {tabs.map((tab) => (
-                    <Tab {...tabProps} key={tab}>
-                        {tab}
+                    <Tab {...tabProps} key={tab} 
+                    fontFamily="mono"
+                    fontSize="xs"
+                        _hover={{
+                            color: 'lightteal.700'
+                        }}
+                    >
+                    {tab}
                     </Tab>
                 ))}
                 <ChakraBox

@@ -1,6 +1,7 @@
 import { ChakraTheme, extendBaseTheme } from '@chakra-ui/react';
 
 import Link from '@/styles/link';
+import Button from '@/styles/button';
 import Heading from '@/styles/heading';
 import Container from '@/styles/container';
 import Tabs from '@/styles/tabs';
@@ -50,14 +51,14 @@ const zIndices = {
 };
 
 const theme = extendBaseTheme({
-    radii,
-    colors,
-    fonts,
-    breakpoints,
-    fontSizes,
-    zIndices,
-    components: { Link, Heading, Container, Tabs },
-    styles: { ...globalStyles },
+  radii,
+  colors,
+  fonts,
+  breakpoints,
+  fontSizes,
+  zIndices,
+  components: { Link, Heading, Container, Tabs, Button },
+  styles: { ...globalStyles },
 } as Partial<ChakraTheme>);
 
 export default theme;

@@ -1,5 +1,5 @@
 import { CareerHistory } from "@/services/useExperience";
-import { Heading, Box, VStack, HStack, Avatar, Text } from "@chakra-ui/react";
+import { Heading, Box, VStack, HStack, Avatar, Text, Stack } from "@chakra-ui/react";
 import { WorkLog } from "./WorkLog";
 
 export function CareerHistory(props: CareerHistory) {
@@ -10,13 +10,13 @@ export function CareerHistory(props: CareerHistory) {
             <HStack spacing={4} align="start">
                 {companyLogo && <Avatar src={companyLogo.url} boxSize="4rem" /> }
                 <Box>
-                    <Heading as="h2" variant="primary" fontSize="2xl">
+                    <Heading as="h2" variant="secondary" fontSize="2xl">
                         {companyName}
                     </Heading>
-                    <HStack>
+                    <Stack direction={{ xs: 'column', md: 'row' }}>
                         <Text>{workDuration}</Text> 
                         <Text color="lightteal.700">({workedAs})</Text>
-                    </HStack>
+                    </Stack>
                 </Box>
             </HStack>
             <VStack spacing={4} align="start" mt={8}>

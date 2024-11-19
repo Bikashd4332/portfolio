@@ -10,21 +10,21 @@ export function WorkLog (props: WorkLogProps) {
 
   return (
     <Box>
-      <Heading as="h3" variant="subheading" lineHeight={1.5}>
+      <Heading as="h3" variant="subheading" lineHeight={1.5} fontSize="md">
         {project}
       </Heading>
       <List spacing={2}>
         {achievements.map((achievement, index) => (
-          <ListItem key={index} as={HStack} alignItems="baseline">
+          <ListItem key={index} display="flex" alignItems="baseline">
             <Box as="span" color="lightteal.700" pr="10px">
-                ▹
+              ▹
             </Box>
-            <Text>{achievement}</Text>
+            <Text fontSize="sm">{achievement}</Text>
           </ListItem>
         ))}
-      </List>     
+      </List>
     </Box>
-  )
+  );
 
 
 }
