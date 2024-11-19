@@ -18,7 +18,7 @@ function Experience() {
             whileInView="show"
             variants={SECTION_ANIMATION}
             viewport={{ once: true, amount: 0.2 }}
-            width="70%"
+            width={{ base: "95%", sm: "85%", md: "70%" }}
         >
             <Heading as="h2" variant="numbered-heading">
                 Where I’ve Worked
