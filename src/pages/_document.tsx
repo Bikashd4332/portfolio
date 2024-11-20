@@ -1,5 +1,5 @@
 import { MetaInfo } from '@/containers/MetaInfo';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
