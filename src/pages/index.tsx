@@ -13,7 +13,7 @@ import { ContactMe } from '@/containers/ContactMe';
 
 export default function Index() {
     return (
-      <AnimatePresence>
+      <>
         <SplashScreen
           durationInSeconds={config.SPLASH_SCREEN_DURATION_IN_SECONDS}
         >
@@ -27,6 +27,6 @@ export default function Index() {
             <ContactMe />
           </Container>
         </SplashScreen>
-      </AnimatePresence>
+      </>
     );
 }
