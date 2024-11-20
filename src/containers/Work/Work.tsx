@@ -15,7 +15,7 @@ function Work() {
       initial="initial"
       whileInView="show"
       variants={SECTION_ANIMATION}
-      viewport={{ amount: 0.4, once: true }}
+      viewport={{ amount: 0.2, once: true }}
     >
       <Heading as="h2" variant="numbered-heading">
         Some Things I’ve Built
