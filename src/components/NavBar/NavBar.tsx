@@ -49,64 +49,67 @@ function NavBar() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <Center
-            as="header"
-            position="fixed"
-            top="0"
-            width="100vw"
-            {...getStylesForScrolledToTop(isScrolledToTop, scrollDir)}
-            zIndex={11}
-            transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
-        >
-            <Box as="nav" flex={1}>
-                <HStack
-                    paddingX={{ base: '25px', md: '3.125rem' }}
-                    transitionDuration="0.25s"
-                    transitionProperty="all"
-                    justifyContent="space-between"
-                    ref={containerRef}
-                >
-                    <Box
-                        as={motion.a}
-                        href="/"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ type: 'tween', delay: '0.3' }}
-                        width="42px"
-                        cursor="pointer"
-                    >
-                        <Logo />
-                    </Box>
-                    <NavBarLinkGroup display={{ base: 'none', md: 'flex' }} />
-                    <HamburgerButton
-                        onClick={onDrawerToggle}
-                        initial={{ opacity: 0 }}
-                        animate={{
-                            opacity: 1,
-                            transition: { delay: 0.4, type: 'tween' },
-                        }}
-                        variant="outlined"
-                        isTriggered={isDrawerOpen}
-                        zIndex={9}
-                        display={{ base: 'initial', md: 'none' }}
-                        // NOTE: This is required to not make it move when navdrawer opens.
-                        position="absolute"
-                        right="25px"
-                    />
-                    <NavbarDrawer
-                        isOpen={isDrawerOpen}
-                        onClose={onDrawerClose}
-                        /* NOTE: this is reuiqred for rendering navdrawer here
-                         * common to the parent of HamBurgerButton
-                         */
-                        portalProps={{
-                            containerRef,
-                            appendToParentPortal: false,
-                        }}
-                    />
-                </HStack>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        as="header"
+        position="fixed"
+        top="0"
+        width="100vw"
+        {...getStylesForScrolledToTop(isScrolledToTop, scrollDir)}
+        zIndex={11}
+        transition="all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)"
+      >
+        <Box as="nav" flex={1}>
+          <HStack
+            paddingX={{ base: '25px', md: '3.125rem' }}
+            transitionDuration="0.25s"
+            transitionProperty="all"
+            justifyContent="space-between"
+            ref={containerRef}
+          >
+            <Box
+              as={motion.a}
+              href="/"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ type: 'tween', delay: '0.3' }}
+              width="42px"
+              cursor="pointer"
+            >
+              <Logo />
             </Box>
-        </Center>
+            <NavBarLinkGroup display={{ base: 'none', md: 'flex' }} />
+            <HamburgerButton
+              onClick={onDrawerToggle}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.4, type: 'tween' },
+              }}
+              variant="outlined"
+              isTriggered={isDrawerOpen}
+              zIndex={9}
+              display={{ base: 'initial', md: 'none' }}
+              // NOTE: This is required to not make it move when navdrawer opens.
+              position="absolute"
+              right="25px"
+            />
+            <NavbarDrawer
+              isOpen={isDrawerOpen}
+              onClose={onDrawerClose}
+              /* NOTE: this is reuiqred for rendering navdrawer here
+               * common to the parent of HamBurgerButton
+               */
+              portalProps={{
+                containerRef,
+                appendToParentPortal: false,
+              }}
+            />
+          </HStack>
+        </Box>
+      </Box>
     );
 }
 
