@@ -1,23 +1,23 @@
 import { useState, useEffect } from 'react';
 
 export interface UseSplashScreenProps {
-    durationInSeconds: number;
+  durationInSeconds: number;
 }
 
 const useSplashScreen = ({ durationInSeconds }: UseSplashScreenProps) => {
-    const [isSplashScreenPlaying, setIsSplashScreenPlaying] = useState(true);
+  const [isSplashScreenPlaying, setIsSplashScreenPlaying] = useState(true);
 
-    const finnishLoading = () => {
-        setIsSplashScreenPlaying(false);
-    };
+  const finnishLoading = () => {
+    setIsSplashScreenPlaying(false);
+  };
 
-    useEffect(() => {
-        setTimeout(() => {
-            finnishLoading();
-        }, durationInSeconds * 1000);
-    }, [isSplashScreenPlaying, durationInSeconds]);
+  useEffect(() => {
+    setTimeout(() => {
+      finnishLoading();
+    }, durationInSeconds * 1000);
+  }, [isSplashScreenPlaying, durationInSeconds]);
 
-    return isSplashScreenPlaying;
+  return isSplashScreenPlaying;
 };
 
 export { useSplashScreen };

@@ -1,11 +1,11 @@
-import { Box, Heading, HStack, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, List, ListItem, Text } from '@chakra-ui/react';
 
 type WorkLogProps = {
   achievements: Array<string>;
   project?: string;
-}
+};
 
-export function WorkLog (props: WorkLogProps) {
+export function WorkLog(props: WorkLogProps) {
   const { achievements, project } = props;
 
   return (
@@ -25,6 +25,4 @@ export function WorkLog (props: WorkLogProps) {
       </List>
     </Box>
   );
-
-
 }
