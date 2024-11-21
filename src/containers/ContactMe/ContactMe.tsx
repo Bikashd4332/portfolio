@@ -56,7 +56,7 @@ function ContactMe() {
         as={motion.a}
         variant="outlined"
         size="lg"
-        mt="20px"
+        my="20px"
         href="mailto:bikashd4332@gmail.com"
         rel="noopener noreferrer"
       >

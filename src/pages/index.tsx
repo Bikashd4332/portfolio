@@ -18,6 +18,10 @@ import {
   query as useHeroSectionContentQuery,
   PortfolioHeroCollectionResult,
 } from '@/services/useHeroSectionContent';
+import { Box } from '@/components/Box';
+import { Link } from '@/components/Link';
+import { motion } from 'framer-motion';
+import { RepoLink } from '@/containers/RepoLink/RepoLink';
 
 type IndexProps = {
   fallback: Record<
@@ -42,6 +46,7 @@ export default function Index(props: IndexProps) {
           <Experience />
           <Work />
           <ContactMe />
+          <RepoLink />
         </Container>
       </SplashScreen>
     </SWRConfig>
