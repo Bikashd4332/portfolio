@@ -27,26 +27,29 @@ export interface PortfolioHeroSection {
   heroText: string;
 }
 
-export function useAboutMe() {
-  const query = gql`
-    query {
-      aboutMyselfCollection {
-        items {
-          aboutMe
-          techSkill {
-            ...TechSkills
-          }
-          profileImage {
-            url
-          }
+export const query = gql`
+  query {
+    aboutMyselfCollection {
+      items {
+        aboutMe
+        techSkill {
+          ...TechSkills
+        }
+        profileImage {
+          url
         }
       }
     }
+  }
 
-    fragment TechSkills on TechSkills {
-      technologies
-    }
-  `;
+  fragment TechSkills on TechSkills {
+    technologies
+  }
+`;
 
-  return useSWR<AboutMySelfCollectionResult, Error, FetchConfig>({ target: query, type: 'content'});
+export function useAboutMe() {
+  return useSWR<AboutMySelfCollectionResult, Error, FetchConfig>({
+    target: query,
+    type: 'content',
+  });
 }
