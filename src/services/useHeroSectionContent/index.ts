@@ -3,9 +3,9 @@ import { gql } from 'graphql-request';
 import useSWR from 'swr';
 
 export interface PortfolioHeroCollectionResult {
-  portfolioHeroSectionCollection:  {
+  portfolioHeroSectionCollection: {
     items: Array<PortfolioHeroSection>;
-  }
+  };
 }
 
 export interface PortfolioHeroSection {
@@ -15,23 +15,22 @@ export interface PortfolioHeroSection {
   heroText: string;
 }
 
-
-export const useHeroSectionContent = () => {
-  const query = gql`
-    query {
-      portfolioHeroSectionCollection {
-        items {
-          introductionLine
-          name
-          summary
-          heroText
-        }
+export const query = gql`
+  query {
+    portfolioHeroSectionCollection {
+      items {
+        introductionLine
+        name
+        summary
+        heroText
       }
     }
-  `;
+  }
+`;
 
+export const useHeroSectionContent = () => {
   return useSWR<PortfolioHeroCollectionResult, Error, FetchConfig>({
     target: query,
-    type: 'content'
+    type: 'content',
   });
 };
