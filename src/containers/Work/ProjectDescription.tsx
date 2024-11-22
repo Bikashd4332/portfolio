@@ -37,10 +37,13 @@ function ProjectDescription(props: ProjectDescriptionProps) {
             {name}
           </Text>
           <Box
-            boxShadow="0 10px 30px -15px var(--navy-shadow)"
-            p="25px"
+            boxShadow={{
+              base: 'none',
+              md: '0 10px 30px -15px var(--navy-shadow)',
+            }}
+            p={{ base: '20px 0px', md: '25px' }}
             rounded="md"
-            backgroundColor="navyblue.300"
+            backgroundColor={{ base: 'transparent', md: 'navyblue.300' }}
           >
             {description}
           </Box>
