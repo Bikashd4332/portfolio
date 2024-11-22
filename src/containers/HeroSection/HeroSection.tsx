@@ -51,7 +51,6 @@ export function HeroSection() {
       variants={parentVariants}
       animate="show"
       initial="initial"
-      padding={{ base: '50px', md: '0' }}
     >
       <Box variants={childVariants} width="max-content">
         <Heading

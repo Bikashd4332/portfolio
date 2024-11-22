@@ -15,6 +15,7 @@ function ProjectImage(props: ProjectImageProps) {
       gridArea="1 / 6 / -1 / -1"
       position="relative"
       zIndex={1}
+      gridColumn={{ base: '1 / -1', md: '6 / -1' }}
       boxShadow="0 10px 30px -15px rgba(2,12,27,0.7)"
     >
       <Box
