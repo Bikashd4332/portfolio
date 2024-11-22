@@ -48,10 +48,10 @@ export function HeroSection() {
       justifyContent="center"
       height="100vh"
       minHeight="100vh"
-      padding="0"
       variants={parentVariants}
       animate="show"
       initial="initial"
+      padding={{ base: '50px', md: '0' }}
     >
       <Box variants={childVariants} width="max-content">
         <Heading
