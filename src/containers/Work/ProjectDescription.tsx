@@ -17,6 +17,11 @@ function ProjectDescription(props: ProjectDescriptionProps) {
         position="relative"
         zIndex={2}
         className="project-content"
+        display={{ base: 'flex', md: 'initial' }}
+        flexDirection={{ base: 'column', md: 'initial' }}
+        justifyContent={{ base: 'center', md: 'initial' }}
+        gridColumn={{ base: '1 / -1', md: '1 / 9' }}
+        padding="40px 40px 30px"
       >
         <Box position="relative">
           <Text

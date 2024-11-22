@@ -13,12 +13,13 @@ function ProjectContainer(props: PropsWithChildren) {
       position="relative"
       sx={{
         '&:nth-of-type(2n+1) > .project-content': {
-          gridColumn: '7 / -1',
-          textAlign: 'right',
+          gridColumn: { base: '1 / -1', md: '7 / -1' },
+          textAlign: { base: 'left', md: 'right' },
+          padding: '40px 40px 30px',
         },
 
         '&:nth-of-type(2n+1) > .project-image': {
-          gridColumn: '1 / 8',
+          gridColumn: { base: '1 / -1', md: '1 / 8' },
         },
 
         '&:nth-of-type(2n+1)  .project-tech-list': {

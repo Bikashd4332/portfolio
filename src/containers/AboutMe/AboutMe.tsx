@@ -28,6 +28,7 @@ function AboutMe() {
       whileInView="show"
       variants={SECTION_ANIMATION}
       viewport={{ amount: 0.4, once: true }}
+      padding={{ base: '50px' }}
     >
       <Heading as="h2" variant="numbered-heading">
         About Me

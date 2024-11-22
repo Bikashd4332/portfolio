@@ -16,6 +16,7 @@ function Work() {
       whileInView="show"
       variants={SECTION_ANIMATION}
       viewport={{ amount: 0.2, once: true }}
+      padding={{ base: '50px', md: '0' }}
     >
       <Heading as="h2" variant="numbered-heading">
         Some Things I’ve Built

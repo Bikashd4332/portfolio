@@ -11,6 +11,7 @@ function ProjectImage(props: ProjectImageProps) {
   return (
     <Box
       className="project-image"
+      opacity={{ base: 0.25, md: 1 }}
       gridArea="1 / 6 / -1 / -1"
       position="relative"
       zIndex={1}
